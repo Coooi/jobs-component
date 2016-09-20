@@ -1,0 +1,45 @@
+@import "vendor";
+@import "hide";
+@import "mixins";
+@import "typography";
+@import "variables";
+
+
+html {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 16px;
+    background-color: $bat-light-grey;
+    @media #{$medium-and-down} {
+        overflow-x: hidden;
+    }
+}
+.container--index {
+    text-align: center;
+    h1 {
+        font-size: 40px;
+        font-weight: 300;
+        @media #{$small_and-down} {
+            font-size: 26px;
+        }
+    }
+}
+.nopadding {
+    padding: 0 !important;
+}
+p {
+    margin: 0 !important;
+}
+
+@import "jobs";

@@ -1,0 +1,85 @@
+@import "mixins";
+@import "variables";
+@import "spinner";
+
+.container--main {
+  //padding: 0 $xsmall_padding $xsmall_padding $xsmall_padding;
+  //@media #{$small_and-down} {
+  //  margin-top: $xsmall_margin;
+  //}
+}
+
+#jobs-component {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      margin-bottom: 30px;
+      .job {
+        min-width: 315px;
+        background-color: $white;
+        border: 1px solid $bat-grey;
+        border-radius: 4px;
+        -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.44);
+        -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.44);
+        box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.44);
+        .job__header {
+          display: flex;
+          justify-content: space-between;
+          padding: $xsmall_padding;
+          background-color: $bat-black;
+          color: $white;
+          font-weight: 400;
+        }
+        .job__status-header {
+          text-align: center;
+          padding: 10px 0;
+          background-color: $bat-grey;
+          color: $white;
+          font-weight: 400;
+        }
+        .job__details {
+          padding: $xsmall_padding $xsmall_padding 0;
+          .job__detail {
+            padding: 5px 0;
+            width: 100%;
+            padding-bottom: $xsmall_padding;
+          }
+        }
+        .job__weather-header {
+          @include flex-center();
+          background-color: $bat-yellow;
+          font-weight: 400;
+        }
+        .weather__details {
+          padding: $xsmall_padding $xsmall_padding 0;
+          .weather__detail {
+            padding: 5px 0;
+            width: 100%;
+            padding-bottom: $xsmall_padding;
+          }
+        }
+      }
+    }
+  }
+}
+.capitalize {
+  text-transform: capitalize;
+}
+
+.render-job {
+  -webkit-transition: 1s;
+}
+.render-job.ng-enter {
+  opacity: 0;
+}
+.render-job.ng-leave {
+  opacity: 1;
+}
+.render-job.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.render-job.ng-leave.ng-leave-active {
+  opacity: 0;
+}

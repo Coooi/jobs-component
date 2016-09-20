@@ -1,0 +1,57 @@
+<section class="container container--main">
+    <div id="jobs-component">
+        <div class="spinner" ng-if="$ctrl.showSpinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+        </div>
+        <div class="error-box" ng-if="$ctrl.errorMsg">
+            <p>{{$ctrl.errorMsg}}</p>
+        </div>
+        <div class="results" ng-if="$ctrl.showResults">
+            <ul class="row">
+                <li class="col-lg-6 col-md-6 col-sm-12 col-xs 12 render-job" ng-repeat="job in $ctrl.jobs">
+                        <div class="job">
+                            <div class="job__header">
+                                <span>{{job.job_date | date:"d MMM. y"}}</span>
+                                <span>{{job.customer_name}}</span>
+                            </div>
+                            <div class="job__status-header">
+                                <span>{{job.status}}</span>
+                            </div>
+                            <div class="job__details">
+                                <div class="job__detail">
+                                    <span>Order time: {{job.order_time}}</span>
+                                </div>
+                                <div class="job__detail">
+                                    <span>Recurrency: {{job.recurrency | recurrency}}</span>
+                                </div>
+                                <div class="job__detail">
+                                    <span>Price: $55.04 ({{job.payment_method}})</span>
+                                </div>
+                                <div class="job__detail">
+                                    <span class="capitalize">Extras: {{job.extras | extras}}</span>
+                                </div>
+                                <div class="job__detail">
+                                    <div>
+                                        <span>Address: <span class="capitalize">{{job.job_street}}</span> - {{job.job_postalcode}} - {{job.job_city}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="job__weather-header">
+                                <span>Weather</span>
+                                <img src="http://openweathermap.org/img/w/10d.png" alt="">
+                            </div>
+                            <div class="weather__details">
+                                <div class="weather__detail">
+                                    <span class="capitalize">Now: {{job.weather.main.temp | celsius}} | {{job.weather.weather[0].main}} ({{job.weather.weather[0].description}})</span>
+                                </div>
+                                <div class="weather__detail">
+                                    <span>Today: {{job.weather.main.temp_min | celsius}} (min) | {{job.weather.main.temp_max | celsius}} (max)</span>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
