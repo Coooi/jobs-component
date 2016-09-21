@@ -8,8 +8,7 @@ let getAllJobs = function(req, res){
     const JOBS_URL = 'http://private-14c693-rentapanda.apiary-mock.com/jobs',
           OPEN_WEATHER_API_KEY = 'a065c4f72910bbc46dc78980fe6fe962',
           OPEN_WEATHER_URL = 'http://api.openweathermap.org/data/2.5/weather',
-          KEY_PARAM = `&APPID=${OPEN_WEATHER_API_KEY}`,
-          CELSIUS_PARAM = '&units=metric';
+          KEY_PARAM = `&APPID=${OPEN_WEATHER_API_KEY}`;
 
     const jobsOptions = {
         uri: JOBS_URL,
@@ -31,7 +30,7 @@ let getAllJobs = function(req, res){
             const latitude = job.job_latitude;
             const longitude =job.job_longitude;
             const weathersOptions = {
-                uri: `${OPEN_WEATHER_URL}?lat=${latitude}&lon=${longitude}${KEY_PARAM}${CELSIUS_PARAM}`,
+                uri: `${OPEN_WEATHER_URL}?lat=${latitude}&lon=${longitude}${KEY_PARAM}`,
                 method: 'GET',
                 timeout: 30000,
                 json: true

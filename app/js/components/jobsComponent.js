@@ -1,4 +1,4 @@
-function JobsController(ApiService, $log, $scope) {
+function JobsController(ApiService, $log, $scope, $timeout) {
     var $ctrl = this;
 
     $ctrl.errorMsg = '';
@@ -9,7 +9,6 @@ function JobsController(ApiService, $log, $scope) {
         $ctrl.getAllJobs();
     };
 
-
     $ctrl.getAllJobs = function () {
         $ctrl.showResults = false;
         $ctrl.showSpinner = true;
@@ -17,11 +16,12 @@ function JobsController(ApiService, $log, $scope) {
         ApiService.getAllJobs().then(handleSuccess, handleError);
     };
 
-
-
     function handleSuccess(jobsResponse) {
         $ctrl.showSpinner = false;
-        $ctrl.jobs = jobsResponse;
+        $timeout(function () {
+            $ctrl.jobs = jobsResponse;
+        });
+
         $ctrl.showResults = true;
     }
 

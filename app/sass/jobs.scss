@@ -2,13 +2,6 @@
 @import "variables";
 @import "spinner";
 
-.container--main {
-  //padding: 0 $xsmall_padding $xsmall_padding $xsmall_padding;
-  //@media #{$small_and-down} {
-  //  margin-top: $xsmall_margin;
-  //}
-}
-
 #jobs-component {
   ul {
     margin: 0;
@@ -21,23 +14,23 @@
         background-color: $white;
         border: 1px solid $bat-grey;
         border-radius: 4px;
-        -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.44);
-        -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.44);
-        box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.44);
+        -webkit-box-shadow: 0 0 3px 1px rgba(0,0,0,0.44);
+        -moz-box-shadow: 0 0 3px 1px rgba(0,0,0,0.44);
+        box-shadow: 0 0 3px 1px rgba(0,0,0,0.44);
         .job__header {
           display: flex;
           justify-content: space-between;
           padding: $xsmall_padding;
           background-color: $bat-black;
           color: $white;
-          font-weight: 400;
+          font-weight: $normal;
         }
         .job__status-header {
           text-align: center;
-          padding: 10px 0;
-          background-color: $bat-grey;
+          padding: 8px 0;
           color: $white;
-          font-weight: 400;
+          font-weight: $medium;
+          font-size: $xxsmall_size;
         }
         .job__details {
           padding: $xsmall_padding $xsmall_padding 0;
@@ -45,19 +38,42 @@
             padding: 5px 0;
             width: 100%;
             padding-bottom: $xsmall_padding;
+            label {
+              font-weight: $medium;
+            }
+            span {
+              font-weight: $normal;
+            }
           }
         }
-        .job__weather-header {
-          @include flex-center();
-          background-color: $bat-yellow;
-          font-weight: 400;
-        }
-        .weather__details {
-          padding: $xsmall_padding $xsmall_padding 0;
-          .weather__detail {
-            padding: 5px 0;
-            width: 100%;
-            padding-bottom: $xsmall_padding;
+        .weather {
+          background-color: #f3f3f3;
+          -webkit-box-shadow: inset 0px 1px 9px 1px rgba(0,0,0,0.32);
+          -moz-box-shadow: inset 0px 1px 9px 1px rgba(0,0,0,0.32);
+          box-shadow: inset 0px 1px 9px 1px rgba(0,0,0,0.32);
+          .no-weather {
+            padding: $xsmall_padding;
+            text-align: center;
+            span {
+              font-size: $xxsmall_size;
+            }
+          }
+          .job__weather-header {
+            @include flex-center();
+            border-top: 1px solid;
+            height: 34px;
+            font-weight: $medium;
+          }
+          .weather__details {
+            padding: $xsmall_padding $xsmall_padding 0;
+            .weather__detail {
+              padding: 5px 0;
+              width: 100%;
+              padding-bottom: $xsmall_padding;
+              span {
+                font-size: $xxsmall_size;
+              }
+            }
           }
         }
       }
@@ -67,19 +83,46 @@
 .capitalize {
   text-transform: capitalize;
 }
-
-.render-job {
-  -webkit-transition: 1s;
+.status--cancelled {
+  background-color: $bat-grey;
 }
+.status--error {
+  background-color: #FF4C4C;
+}
+.status--fulfilled {
+  background-color: #E97E25;
+}
+.status--pending {
+  background-color: #9DDA22;
+  span {
+    color: $bat-black;
+  }
+}
+.status--invoiced {
+  background-color: #53F1F1;
+  span {
+    color: $bat-black;
+  }
+}
+.clear-left {
+  clear: left;
+}
+.clear-right {
+  clear: right;
+}
+
+.render-job.ng-move,
+.render-job.ng-enter,
+.render-job.ng-leave {
+  transition:all linear 0.5s;
+}
+.render-job.ng-leave.ng-leave-active,
+.render-job.ng-move,
 .render-job.ng-enter {
   opacity: 0;
 }
-.render-job.ng-leave {
-  opacity: 1;
-}
+.render-job.ng-leave,
+.render-job.ng-move.ng-move-active,
 .render-job.ng-enter.ng-enter-active {
-  opacity: 1;
-}
-.render-job.ng-leave.ng-leave-active {
-  opacity: 0;
+  opacity:1;
 }

@@ -9,39 +9,57 @@
         </div>
         <div class="results" ng-if="$ctrl.showResults">
             <ul class="row">
-                <li class="col-lg-6 col-md-6 col-sm-12 col-xs 12 render-job" ng-repeat="job in $ctrl.jobs">
-                        <div class="job">
-                            <div class="job__header">
-                                <span>{{job.job_date | date:"d MMM. y"}}</span>
-                                <span>{{job.customer_name}}</span>
+                <li ng-repeat="job in $ctrl.jobs" class="col-lg-6 col-md-6 col-sm-12 col-xs 12 render-job" ng-class="{'clear-left': $index%2===0, 'clear-right': $index%2!==0}">
+                    <div class="job">
+                        <div class="job__header">
+                            <span>{{job.job_date | date:"d MMM. y"}}</span>
+                            <span>{{job.customer_name}}</span>
+                        </div>
+                        <div class="job__status-header" ng-class="{'status--fulfilled': job.__status==='FULFILLED', 'status--pending': job.__status==='START',
+                                                                   'status--invoiced': job.__status==='INVOICED', 'status--error': job.__status==='ERROR',
+                                                                   'status--cancelled': job.__status==='CANCELLED'}">
+                            <span>{{job.status}}</span>
+                        </div>
+                        <div class="job__details">
+                            <div class="job__detail">
+                                <label>
+                                    Order time:
+                                </label><span>{{job.order_time}}</span>
                             </div>
-                            <div class="job__status-header">
-                                <span>{{job.status}}</span>
+                            <div class="job__detail">
+                                <label>
+                                    Recurrency:
+                                </label>
+                                <span>{{job.recurrency | recurrency}}</span>
                             </div>
-                            <div class="job__details">
-                                <div class="job__detail">
-                                    <span>Order time: {{job.order_time}}</span>
-                                </div>
-                                <div class="job__detail">
-                                    <span>Recurrency: {{job.recurrency | recurrency}}</span>
-                                </div>
-                                <div class="job__detail">
-                                    <span>Price: $55.04 ({{job.payment_method}})</span>
-                                </div>
-                                <div class="job__detail">
-                                    <span class="capitalize">Extras: {{job.extras | extras}}</span>
-                                </div>
-                                <div class="job__detail">
-                                    <div>
-                                        <span>Address: <span class="capitalize">{{job.job_street}}</span> - {{job.job_postalcode}} - {{job.job_city}}</span>
-                                    </div>
+                            <div class="job__detail">
+                                <label>
+                                    Price:
+                                </label>
+                                <span>{{job.price}} ({{job.payment_method}})</span>
+                            </div>
+                            <div class="job__detail">
+                                <label>Extras:</label>
+                                <span class="capitalize">{{job.extras | extras}}</span>
+                            </div>
+                            <div class="job__detail">
+                                <div>
+                                    <label>
+                                        Address:
+                                    </label>
+                                    <span class="capitalize">{{job.job_street}} - {{job.job_postalcode}} - {{job.job_city}}</span>
                                 </div>
                             </div>
-                            <div class="job__weather-header">
-                                <span>Weather</span>
-                                <img src="http://openweathermap.org/img/w/10d.png" alt="">
+                        </div>
+                        <div class="weather">
+                            <div class="no-weather" ng-if="!job.weather.main">
+                                <span>No weather data available right now.</span>
                             </div>
-                            <div class="weather__details">
+                            <div class="job__weather-header" ng-if="job.weather.main">
+                                <span>Weather </span>
+                                <img src="http://openweathermap.org/img/w/{{job.weather.weather[0].icon}}.png" alt="">
+                            </div>
+                            <div class="weather__details" ng-if="job.weather.main">
                                 <div class="weather__detail">
                                     <span class="capitalize">Now: {{job.weather.main.temp | celsius}} | {{job.weather.weather[0].main}} ({{job.weather.weather[0].description}})</span>
                                 </div>
@@ -50,6 +68,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </li>
             </ul>
         </div>

@@ -19,7 +19,7 @@ body {
     margin: 0 !important;
     padding: 0 !important;
     font-family: 'Roboto', sans-serif !important;
-    font-size: 16px;
+    font-size: $body_size;
     background-color: $bat-light-grey;
     @media #{$medium-and-down} {
         overflow-x: hidden;
@@ -27,11 +27,23 @@ body {
 }
 .container--index {
     text-align: center;
-    h1 {
-        font-size: 40px;
-        font-weight: 300;
-        @media #{$small_and-down} {
-            font-size: 26px;
+    .title-box {
+        background-color: $bat-yellow;
+        padding: $xsmall_padding;
+        border-radius: 10px;
+        width: 150px;
+        margin: $xsmall_margin auto $default_margin auto;
+        -webkit-box-shadow: 0 0 3px 1px rgba(0,0,0,0.44);
+        -moz-box-shadow: 0 0 3px 1px rgba(0,0,0,0.44);
+        box-shadow: 0 0 3px 1px rgba(0,0,0,0.44);
+        h1 {
+            color: $bat-black;
+            margin: 0;
+            font-size: 40px;
+            font-weight: $normal;
+            @media #{$small_and-down} {
+                font-size: 26px;
+            }
         }
     }
 }
