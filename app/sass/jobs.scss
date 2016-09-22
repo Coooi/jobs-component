@@ -48,9 +48,9 @@
         }
         .weather {
           background-color: #f3f3f3;
-          -webkit-box-shadow: inset 0px 1px 9px 1px rgba(0,0,0,0.32);
-          -moz-box-shadow: inset 0px 1px 9px 1px rgba(0,0,0,0.32);
-          box-shadow: inset 0px 1px 9px 1px rgba(0,0,0,0.32);
+          -webkit-box-shadow: inset 0 1px 9px 1px rgba(0,0,0,0.32);
+          -moz-box-shadow: inset 0 1px 9px 1px rgba(0,0,0,0.32);
+          box-shadow: inset 0 1px 9px 1px rgba(0,0,0,0.32);
           .no-weather {
             padding: $xsmall_padding;
             text-align: center;
