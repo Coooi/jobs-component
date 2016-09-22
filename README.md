@@ -8,7 +8,7 @@ Responsive design jobs component built with AngularJS and NodeJS.
 The system will display all the jobs(tasks) on the screen along with the weather of each respective city.
 
 ### Working URL ###
-
+https://bat-jobs.herokuapp.com/
 
 ### Installation ###
 
