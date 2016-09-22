@@ -2,7 +2,7 @@ angular.module('jobsApp')
     .filter('celsius', function () {
         return function (temp) {
             temp = Math.round((temp - 273.15) * 10)/10;
-            return temp ? temp + 'ºC' : "";
+            return (temp===0 || temp) ? temp + 'ºC' : "";
         };
     })
     .filter('recurrency', function () {

@@ -57,7 +57,7 @@
                             </div>
                             <div class="job__weather-header" ng-if="job.weather.main">
                                 <span>Weather </span>
-                                <img src="http://openweathermap.org/img/w/{{job.weather.weather[0].icon}}.png" alt="">
+                                <img ng-src="http://openweathermap.org/img/w/{{job.weather.weather[0].icon}}.png" src="" alt="">
                             </div>
                             <div class="weather__details" ng-if="job.weather.main">
                                 <div class="weather__detail">
